@@ -14,7 +14,7 @@ app = FastAPI(title="DocuMind API")
 # Allow Next.js frontend to talk to FastAPI
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000","https://documind-delta-sage.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
