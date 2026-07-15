@@ -4,9 +4,10 @@ python-multipart
 pymupdf
 pdfplumber
 python-docx
-google-generativeai
+groq
 chromadb
 sentence-transformers
 python-dotenv
 supabase
 Pillow
+requests
