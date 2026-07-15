@@ -52,7 +52,7 @@ export default function DashboardPage() {
       const formData = new FormData()
       formData.append('file', file)
 
-      const uploadRes = await fetch('http://localhost:8000/api/upload/', {
+      const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/upload/`, {
         method: 'POST',
         body: formData,
       })
@@ -67,7 +67,7 @@ export default function DashboardPage() {
       setUploadStep('AI is analyzing your document...')
       setAnalyzing(true)
 
-      const analyzeRes = await fetch('http://localhost:8000/api/analyze/', {
+      const analyzeRes = await fetch("http://localhost:8000/api/analyze/", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
