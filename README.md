@@ -14,6 +14,14 @@ a legal analyst, an invoice becomes a financial analyzer.
 
 ---
 
+## 🌐 Live Demo
+
+**Frontend:** https://documind-delta-sage.vercel.app
+
+**Backend API:** https://documind-production.up.railway.app
+
+---
+
 ## The Problem It Solves
 
 People work with dozens of different document types daily — resumes,
@@ -71,3 +79,73 @@ ensures each user sees only their own documents.
 ---
 
 ## Architecture
+Document Upload
+↓
+Multimodal Parser
+PyMuPDF → text extraction
+Gemini Vision → scanned/image pages
+↓
+Document Type Classifier (Groq/Llama 3)
+↓
+RAG Pipeline
+Sentence-BERT → chunk embeddings
+ChromaDB → vector storage
+↓
+Adaptive Analysis Engine (Groq/Llama 3)
+Type-specific structured analysis
+↓
+AI Chat Interface
+RAG retrieval → Llama 3 generation
+
+---
+
+## Project Structure
+documind/
+├── frontend/                 ← Next.js app
+│   ├── app/
+│   │   ├── page.tsx          ← Landing page
+│   │   ├── login/            ← Auth pages
+│   │   ├── signup/
+│   │   ├── dashboard/        ← Document management
+│   │   └── workspace/[id]/   ← Document workspace
+│   └── lib/
+│       └── supabase.ts
+│
+└── backend/                  ← FastAPI
+├── main.py
+├── routes/
+│   ├── upload.py
+│   ├── analyze.py
+│   └── chat.py
+└── services/
+├── parser.py         ← Multimodal extraction
+├── classifier.py     ← Document type detection
+├── analyzer.py       ← Type-specific analysis
+├── chat_engine.py    ← AI chat
+└── rag_engine.py     ← RAG pipeline
+
+---
+
+## Supported Document Types
+
+Resume · Research Paper · Legal Contract · Invoice ·
+Meeting Notes · Lecture Notes · Financial Report ·
+Company Policy · Technical Manual · Project Report ·
+Medical Report · Email · General Documents
+
+---
+
+## What I Learned Building This
+
+- How RAG works in production (chunking strategies,
+  embedding models, vector similarity search)
+- Why multimodal AI matters for real documents
+  (most PDFs have tables, charts, scanned content)
+- How to architect a full-stack AI product with
+  proper separation of concerns
+- Supabase row-level security for multi-user data isolation
+- Deploying ML-heavy backends with large model dependencies
+
+---
+
+*DocuMind — Built with 🧠 by Tanusha Chopra*
